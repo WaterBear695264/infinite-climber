@@ -1,3 +1,9 @@
+class Player{
+    constructor(x, onHold, onGround){
+        this.x = x;
+        this.y = y;
+    }
+}
 
 
 
