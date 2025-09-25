@@ -1,7 +1,8 @@
 class Player{
     constructor(x, onHold, onGround){
         this.x = x;
-        this.y = y;
+        this.onHold = onHold;
+        this.onGround = onGround;
     }
 }
 
