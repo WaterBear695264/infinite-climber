@@ -22,20 +22,6 @@ class Rock {
 
 }
 
-rockTest = New Rock(New Vector(5, 10), false, false, false, 5);
-
-
-function draw(){
-    background(0);
-    push();
-    Array.foreach((element) => console.log(this.pos));
-
-
-    pop();
-}
-
-
-
 class Vector{
     constructor(x, y){
         this.x = x;
@@ -86,11 +72,6 @@ class Player{
         }
         return false;
     }
-
-    
-
-    
-
 }
 
 let screenSpeed = 0;
@@ -102,15 +83,6 @@ function setup(){
     textAlign(CENTER, CENTER);
 }
 
-function draw(){
-    background(0);
-    push();
-
-
-
-    pop();
-}
-
 function keyPressed() {
   if (keyCode === LEFT_ARROW) {
     
@@ -120,3 +92,18 @@ function keyPressed() {
   // Uncomment to prevent any default behavior.
   // return false;
 }
+
+let rockTest = new Rock(new Vector(5, 10), false, false, false, 5);
+rockArray.push(rockTest);
+
+
+function draw(){
+    background(0);
+    push();
+    console.log(rockArray);
+
+
+    pop();
+}
+
+
