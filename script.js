@@ -34,10 +34,12 @@ class Player{
         this.onGround = onGround;
         this.fallingTimer = 0;
         this.speed = speed;
+        this.alive = true;
+        this.gripstrength = 100;
     }
 
-    move(directions){
-        this.pos.x += speed;
+    move(direction){
+        this.pos.x += this.speed;
     }
 
     handHoldUnder(array){
@@ -49,14 +51,33 @@ class Player{
         return false;
     }
 
-    
+    dead(array, limit){
+        if(!this.handHoldUnder(array) && this.fallingTimer > limit){
+            this.alive = false;
+        }
+    }
 
-    
+    detectHandHold(array){
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pos)
+        }
+    }
+
+    update(){
+        
+    }
 
 }
 
 let screenSpeed = 0;
 let gravity = 0;
+let maxYFallDist = 0;
+let maxXDistFall = 0;
+
+function insideSquare(x, y, sx, sy, wx, wy){
+
+}
+
 
 function setup(){
     createCanvas(800, 800);
