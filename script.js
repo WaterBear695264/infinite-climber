@@ -47,7 +47,7 @@ class Player{
         this.speed = speed;
         this.alive = true;
         this.gripstrength = 100;
-        this.handHoldTarget;
+        this.lastHold;
     }
 
     move(direction){
@@ -73,9 +73,9 @@ class Player{
 
         for(let i = 0; i < array.length; i++){
             let cond1 = array[i].pos.inSquare(this.pos, this.dimensions) && !this.onHold;
-            let cond2 = array[i].id !== this.handHoldTarget || screenSpeed < 0;
+            let cond2 = array[i].id !== this.lastHold || screenSpeed < 0;
                 if(cond1 && cond2){
-                    this.handHoldTarget = i;
+                    this.lastHold = i;
                     this.onHold = true
                 }
         }
