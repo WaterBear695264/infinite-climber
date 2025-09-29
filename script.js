@@ -74,7 +74,7 @@ class Player{
         for(let i = 0; i < array.length; i++){
             let cond1 = array[i].pos.inSquare(this.pos, this.dimensions) && !this.onHold;
             let cond2 = array[i].id !== this.handHoldTarget || screenSpeed < 0;
-                if(array[i].pos.inSquare(this.pos, this.dimensions) && !this.onHold){
+                if(cond1 && cond2){
                     this.handHoldTarget = i;
                     this.onHold = true
                 }
