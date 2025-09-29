@@ -25,17 +25,29 @@ class Vector{
         return new Vector(this.x*m, this.y*m);
     }
 
+    positive(){
+        return this.x > 0 && this.y > 0
+    }
+
+    inSquare(pos, dimensions){
+        if(this.pos.subtract(pos).positive() && this.pos.subtract(pos).x < dimensions.x && this.pos.subtract(pos).y < dimensions.y){
+            return true
+        }
+    }
+
 }
 
 class Player{
-    constructor(pos, onHold, onGround, speed){
+    constructor(pos, dimensions, onHold, onGround, speed){
         this.pos = pos;
+        this.dimensions = dimensions;
         this.onHold = onHold;
         this.onGround = onGround;
         this.fallingTimer = 0;
         this.speed = speed;
         this.alive = true;
         this.gripstrength = 100;
+        this.handHoldTarget;
     }
 
     move(direction){
@@ -58,8 +70,14 @@ class Player{
     }
 
     detectHandHold(array){
+
         for(let i = 0; i < array.length; i++){
-            if(array[i].pos)
+            let cond1 = array[i].pos.inSquare(this.pos, this.dimensions) && !this.onHold;
+            let cond2 = array[i].id !== this.handHoldTarget || screenSpeed < 0;
+                if(array[i].pos.inSquare(this.pos, this.dimensions) && !this.onHold){
+                    this.handHoldTarget = i;
+                    this.onHold = true
+                }
         }
     }
 
@@ -74,9 +92,7 @@ let gravity = 0;
 let maxYFallDist = 0;
 let maxXDistFall = 0;
 
-function insideSquare(x, y, sx, sy, wx, wy){
 
-}
 
 
 function setup(){
