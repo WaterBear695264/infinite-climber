@@ -1,15 +1,24 @@
 const rockArray = [];
+const numRocks = 3;
+const canvasX = 1000;
+const canvasY = 1000;
+
 class Rock {
-    constructor(pos, rotating, falling, trembling, actionspeed){
+    constructor(pos/*(center)*/, rotating, falling, trembling, actionspeed, id){
         this.pos = pos
         this.rotating = rotating;
         this.falling = falling;
         this.trembling = trembling;
         this.actionspeed = actionspeed;
+        this.id = id;
     }
 
-    rotate(){
+    rotate(degrees, direction){
+        if(direction === "clockwise"){
 
+        }else{
+
+        }
     }
 
     fall(){
@@ -78,7 +87,7 @@ let screenSpeed = 0;
 let gravity = 0;
 
 function setup(){
-    createCanvas(800, 800);
+    createCanvas(canvasX, canvasY);
     imageMode(CENTER);
     textAlign(CENTER, CENTER);
 }
@@ -93,13 +102,19 @@ function keyPressed() {
   // return false;
 }
 
-let rockTest = new Rock(new Vector(5, 10), false, false, false, 5);
-rockArray.push(rockTest);
+//let rockTest = new Rock(new Vector(5, 10), false, false, false, 5);
+//let rockTest1 = new Rock(new Vector(10, 20), false, false, false, 5);
+//rockArray.push(rockTest.pos, rockTest1.pos);
 
+for(let i = 0; i < numRocks; i++){
+    var tempRock = new Rock(new Vector(Math.floor(Math.random() * canvasX), Math.floor(Math.random() * canvasY)));
+    rockArray.push(tempRock);
+}
 
 function draw(){
     background(0);
     push();
+    //rockArray.forEach()
     console.log(rockArray);
 
 
